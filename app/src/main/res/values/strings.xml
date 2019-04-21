@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">GeoLocalización</string>
+    <string name="latitud">latitud</string>
+    <string name="longitud">longitud</string>
+    <string name="parar_actualizaciones">parar</string>
+    <string name="iniciar_actualizaciones">iniciar</string>
+    <string name="resume">resumen</string>
+    <string name="pause">pause</string>
+    <string name="botoncliente">Buscar un grupo</string>
+    <string name="botonservidor">Crear un Grupo</string>
+    <string name="nombregrupo">Nombre del grupo</string>
+    <string name="nombreusuario">Nombre del usuario</string>
+    <string name="input_placeholder">Write a message</string>
+</resources>
