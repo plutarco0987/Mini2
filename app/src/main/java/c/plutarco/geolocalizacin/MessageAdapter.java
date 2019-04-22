@@ -66,11 +66,11 @@ public class MessageAdapter extends BaseAdapter {
             convertView.setTag(holder);
             //comentareo este valor porque traemos el nombre del usuario que envio el mensaje y como no hay miembro, no se sabe su
             //nombre
-            //holder.name.setText(message.getMemberData().getName());
+            holder.name.setText(message.getMemberData().getName());
             holder.messageBody.setText(message.getText());
             GradientDrawable drawable = (GradientDrawable) holder.avatar.getBackground();
             //el color se saca con el miembro, si no hay no aparecera, dejo uno por defecto
-            drawable.setColor( Color.parseColor("#AE6118"));
+            drawable.setColor(Color.parseColor(message.getMemberData().getColor()));
         }
 
         return convertView;

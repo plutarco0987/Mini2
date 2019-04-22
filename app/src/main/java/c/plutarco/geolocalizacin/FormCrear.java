@@ -21,4 +21,9 @@ public class FormCrear extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_crear);
     }
+
+
+    //on click
+    //layout datos , distancia y roomname
+    //gps- latitud y longitud
 }

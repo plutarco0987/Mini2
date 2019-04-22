@@ -11,4 +11,5 @@
     <string name="nombregrupo">Nombre del grupo</string>
     <string name="nombreusuario">Nombre del usuario</string>
     <string name="input_placeholder">Write a message</string>
+    <string name="distancia">Distancia</string>
 </resources>

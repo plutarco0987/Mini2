@@ -35,7 +35,7 @@ public class ChatGrupal extends AppCompatActivity  implements RoomListener {
      * hardcodeado, se debe obtener de la base de datos cuando se cree okkey? para dejar en claro que habra muchos chats
      * por ahora que se creen.
      */
-    private String roomName = "Chat_Privado";
+    private String roomName = "observable-Chat_Privado";
     private EditText editText;
     private Scaledrone scaledrone;
     private MessageAdapter messageAdapter;
@@ -123,14 +123,14 @@ public class ChatGrupal extends AppCompatActivity  implements RoomListener {
      * @param receivedMessage Recive el mensaje se se envio o el que recivio
      */
     @Override
-    public void onMessage(Room room,Message receivedMessage) {
+    public void onMessage(Room room,com.scaledrone.lib.Message receivedMessage) {
 
         //objeto mapper para mapear...
         final ObjectMapper mapper = new ObjectMapper();
         try {
             //Creamos MemberData es el objeto mapeado con lo que nos llega del mensaje
             //NOTA: en esta parte es donde se debe obtener el nombre y color (Base de datos...)
-            //final MemberData data = mapper.treeToValue(receivedMessage.getMember().getClientData(), MemberData.class);
+            final MemberData data = mapper.treeToValue(receivedMessage.getMember().getClientData(), MemberData.class);
 
 
 
@@ -141,7 +141,7 @@ public class ChatGrupal extends AppCompatActivity  implements RoomListener {
 
             //Creamos una instancia del mensaje que nos llega (esta clase nosotros la creamos), despues lo corremos en un hilo
             //en ves de NULL debe ir data.- se usa null para pruebas, data seran los datos de arriba una ves se use base de datos.
-            final c.plutarco.geolocalizacin.Message message = new c.plutarco.geolocalizacin.Message(receivedMessage.getData().asText(),null, belongsToCurrentUser);
+            final c.plutarco.geolocalizacin.Message message = new c.plutarco.geolocalizacin.Message(receivedMessage.getData().asText(),data, belongsToCurrentUser);
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
