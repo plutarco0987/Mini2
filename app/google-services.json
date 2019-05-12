@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "454501159994",
+    "firebase_url": "https://mini2-master-79f76.firebaseio.com",
+    "project_id": "mini2-master-79f76",
+    "storage_bucket": "mini2-master-79f76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454501159994:android:8ee69918bdf2aa95",
+        "android_client_info": {
+          "package_name": "c.plutarco.geolocalizacin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "454501159994-267nuqvbjac2jheuc1oqpfnrobb41pfe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "c.plutarco.geolocalizacin",
+            "certificate_hash": "e11c4569e0eaa79c41c2e2c1aecba8d343053768"
+          }
+        },
+        {
+          "client_id": "454501159994-3afgmscgcrgoauso7k05rtvhdbif91oi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "c.plutarco.geolocalizacin",
+            "certificate_hash": "6b0f0b89420c03b91a5000078a2db349adf389c7"
+          }
+        },
+        {
+          "client_id": "454501159994-jlb5mm4aogc1oggq9otsg5gsi7quubfq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSXJOM-pPxsEy3PW3Ay1XhC6wLxZKXNgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "454501159994-jlb5mm4aogc1oggq9otsg5gsi7quubfq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

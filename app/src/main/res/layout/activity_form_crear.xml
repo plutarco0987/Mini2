@@ -17,6 +17,7 @@
             android:text="@string/nombregrupo"/>
 
         <EditText
+            android:id="@+id/et_nombreG"
             android:layout_width="137dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -30,6 +31,7 @@
             android:text="@string/nombreusuario"/>
 
         <EditText
+            android:id="@+id/et_nombreU"
             android:layout_width="137dp"
             android:layout_height="wrap_content"
             />
@@ -44,12 +46,15 @@
             android:text="@string/distancia"/>
 
         <EditText
+            android:id="@+id/et_dist"
             android:layout_width="69dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_servidor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Crear Servidor" />
+
 </LinearLayout>
