@@ -95,7 +95,7 @@ public class FormCrear extends AppCompatActivity {
 
                DatosBD datos = new DatosBD(grupo, usuario, 50, latitud, longitud);
 
-               datosBD.child("Datos").child(id).setValue(datos);
+               datosBD.child("Datos").child(grupo).setValue(datos);
 
                //Toast.makeText(getApplicationContext(), "Chat registrado", Toast.LENGTH_SHORT).show();
 
@@ -104,6 +104,7 @@ public class FormCrear extends AppCompatActivity {
                btnCrear.putExtra("NombreUsuario", usuario);
                btnCrear.putExtra("Administrador", true);
                startActivity(btnCrear);
+               finish();
            }
        });
     }
