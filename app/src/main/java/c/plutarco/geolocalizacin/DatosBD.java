@@ -1,16 +1,21 @@
 package c.plutarco.geolocalizacin;
 
 public class DatosBD {
-    String nombreG, nombreU, dist;
+    String nombreG, nombreU;
+    int dist;
+    double latitud, longitud;
 
     public DatosBD(){
 
     }
 
-    public DatosBD(String nombreG, String nombreU, String dist){
+    public DatosBD(String nombreG, String nombreU, int dist, double latitud, double longitud){
         this.nombreG=nombreG;
         this.nombreU=nombreU;
         this.dist=dist;
+        this.latitud=latitud;
+        this.longitud=longitud;
+
     }
 
     public String getNombreG() {
@@ -21,7 +26,17 @@ public class DatosBD {
         return nombreU;
     }
 
-    public String getDist() {
+    public int getDist() {
         return dist;
     }
+
+    public double getLatitud(){
+        return latitud;
+    }
+
+    public double getLongitud(){
+        return longitud;
+    }
+
+
 }

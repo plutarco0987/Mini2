@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 import com.fasterxml.jackson.core.JsonFactory;
@@ -23,6 +24,12 @@ import com.scaledrone.lib.Scaledrone;
 import java.util.Random;
 
 public class ChatGrupal extends AppCompatActivity  implements RoomListener {
+
+    /**
+    * Datos quE NOS LLEGAN
+    **/
+    //String Nombrechat=getIntent().getStringExtra("NombreChat");
+
 
     /**
      * EL channelID no lo deben cambiar esta ligado a mi cuenta y es unico, con el podemos munitorear el control de
@@ -47,6 +54,13 @@ public class ChatGrupal extends AppCompatActivity  implements RoomListener {
         setContentView(R.layout.activity_chat_grupal);
 
         /**
+         * Resivimos valores, Nombre chat, nombre usuario, si es o no administrador
+         */
+        String Nombrechat=getIntent().getStringExtra("NombreChat");
+        roomName="observable-"+Nombrechat;
+
+        String NombreUsuario=getIntent().getStringExtra("NombreUsuario");
+        /**
          * Inicialización de datos
          */
         editText = (EditText) findViewById(R.id.editText);
@@ -54,7 +68,7 @@ public class ChatGrupal extends AppCompatActivity  implements RoomListener {
         messagesView = (ListView) findViewById(R.id.messages_view);
         messagesView.setAdapter(messageAdapter);
 
-        MemberData data = new MemberData(getRandomName(), getRandomColor());
+        MemberData data = new MemberData(NombreUsuario, getRandomColor());
 
         /**
          * Este valor compone las condicioens para conectarse al servidor de chat (Scaledron)
@@ -83,6 +97,8 @@ public class ChatGrupal extends AppCompatActivity  implements RoomListener {
                 System.err.println(reason);
             }
         });
+
+
     }
 
     /**

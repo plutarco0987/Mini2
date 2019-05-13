@@ -48,7 +48,10 @@
         <EditText
             android:id="@+id/et_dist"
             android:layout_width="69dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="50"
+            android:visibility="visible"
+            tools:visibility="visible" />
     </LinearLayout>
 
     <Button

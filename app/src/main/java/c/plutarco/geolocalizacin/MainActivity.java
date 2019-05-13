@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView mensaje1;
     TextView mensaje2;
+    double longitud=0;
+    double latitud=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,7 +111,9 @@ public class MainActivity extends AppCompatActivity {
             loc.getLongitude();
             String Text = "Mi ubicacion actual es: " + "\n Lat = "
                     + loc.getLatitude() + "\n Long = " + loc.getLongitude();
-            mensaje1.setText(Text);
+            //mensaje1.setText(Text);
+            longitud=loc.getLongitude();
+            latitud=loc.getLatitude();
             this.mainActivity.setLocation(loc);
         }
         @Override
