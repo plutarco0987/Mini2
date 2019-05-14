@@ -12,11 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Buscar"></activity>
+        <activity android:name=".elemento_BD"></activity>
+        <activity android:name=".FormCrear" />
         <activity android:name=".MainActivity" />
         <activity android:name=".ChatGrupal" />
         <activity android:name=".PantallaInicio" />
-        <activity android:name=".FormCrear">
+        <activity android:name=".Buscar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

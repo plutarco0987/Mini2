@@ -6,27 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".Buscar">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="321dp"
-        android:layout_height="52dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="181dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="319dp"
-        android:layout_height="52dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="259dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="232dp"
-        android:layout_height="66dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="89dp"
-        tools:layout_editor_absoluteY="16dp" />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="6dp"
+        android:id="@+id/listViewX"/>
 </android.support.constraint.ConstraintLayout>
+
+
