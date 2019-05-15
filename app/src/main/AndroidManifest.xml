@@ -13,11 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".elemento_BD"></activity>
-        <activity android:name=".FormCrear" />
+        <activity android:name=".Buscar" />
         <activity android:name=".MainActivity" />
         <activity android:name=".ChatGrupal" />
         <activity android:name=".PantallaInicio" />
-        <activity android:name=".Buscar">
+        <activity android:name=".FormCrear">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
