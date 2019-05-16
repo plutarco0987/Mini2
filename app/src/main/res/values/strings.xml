@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GeoLocalización</string>
+    <string name="app_name">Capsule APP</string>
     <string name="latitud">latitud</string>
     <string name="longitud">longitud</string>
     <string name="parar_actualizaciones">parar</string>

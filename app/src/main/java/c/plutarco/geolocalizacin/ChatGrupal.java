@@ -73,10 +73,10 @@ public class ChatGrupal extends AppCompatActivity  implements RoomListener {
     String Nombrechat;
     boolean admin;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_grupal);
-
         locationStart();
 
         /**
@@ -127,6 +127,11 @@ public class ChatGrupal extends AppCompatActivity  implements RoomListener {
         });
 
 
+    }
+
+    public ChatGrupal(String roomName, String nombrechat) {
+        this.roomName = roomName;
+        Nombrechat = nombrechat;
     }
 
     public void ciclo() throws InterruptedException {

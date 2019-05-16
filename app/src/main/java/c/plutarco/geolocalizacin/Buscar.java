@@ -19,6 +19,7 @@ import android.util.Log;
 import com.google.firebase.database.DatabaseError;
 
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,8 +57,7 @@ public class Buscar extends AppCompatActivity {
     Button actualizar;
     double latitudActual;
     double longitudActual;
-    TextView latitudtexto;
-    TextView longitudtexto;
+    TextView numCapsulas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,22 +68,24 @@ public class Buscar extends AppCompatActivity {
 
         nombre= findViewById(R.id.nombre);
         listadatos= findViewById(R.id.lista);
-        latitudtexto=(TextView)findViewById(R.id.latitudtexto);
-        longitudtexto=(TextView)findViewById(R.id.longitudtexto);
+        numCapsulas=(TextView)findViewById(R.id.txt_capsulas);
+
         iniciarfirebase();
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, 1000);
         } else {
             locationStart();
         }
+
         actualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Me diste click ", Toast.LENGTH_SHORT).show();
                 listadatos();
             }
         });
 
-
+        listadatos();
     }
 
     public void listadatos(){
@@ -95,7 +97,7 @@ public class Buscar extends AppCompatActivity {
 
                 int iter=0;
                 for(DataSnapshot objSnapShot: dataSnapshot.getChildren()){
-                    DatosBD datos = objSnapShot.getValue(DatosBD.class);
+                    final DatosBD datos = objSnapShot.getValue(DatosBD.class);
                     lista.add(datos);
 
                     Location locationA = new Location("punto A");
@@ -112,18 +114,35 @@ public class Buscar extends AppCompatActivity {
                     iter++;
                     Toast.makeText(getApplicationContext(), "Distancia: "+ distance +" Count: "+iter,Toast.LENGTH_SHORT).show();
 
-                    if(distance<100){
-                        System.out.println("Entró...............................");
-                        Toast.makeText(getApplicationContext(), "Entró: "+ distance +" Count: "+listaEnRango.size(),Toast.LENGTH_SHORT).show();
+                    if(distance<=100){
                         listaEnRango.add(datos);
-                        nombre.setText("Hola: "+listaEnRango.size()+" / "+lista.size());
-                        Toast.makeText(getApplicationContext(), "Distancia: "+ distance +" Count: "+listaEnRango.size(),Toast.LENGTH_SHORT).show();
                     }
-                    nombre.setText("Hola: "+listaEnRango.size()+" / "+lista.size());
+                    numCapsulas.setText(String.valueOf("Capsulas disponibles: "+listaEnRango.size()+"/"+lista.size()));
 
-                    adapter= new ArrayAdapter<DatosBD>(Buscar.this,android.R.layout.simple_list_item_1,listaEnRango);
-                    listadatos.setAdapter(adapter);
+
                 }
+                adapter= new ArrayAdapter<DatosBD>(Buscar.this,android.R.layout.simple_list_item_1,listaEnRango);
+                listadatos.setAdapter(adapter);
+                listadatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        //Toast.makeText(getApplicationContext(),"Me diste click! Pos: "+view.toString(), Toast.LENGTH_SHORT).show();
+                        if(nombre.length()<0){
+                            Toast.makeText(Buscar.this, "Debes incluir un nombre de usuario", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            //List<DatosBD>
+                            Toast.makeText(Buscar.this, String.valueOf(view.), Toast.LENGTH_SHORT).show();
+                            //Intent btnCrear = new Intent(Buscar.this, ChatGrupal.class);
+                            //btnCrear.putExtra("NombreChat", grupo);
+                            //btnCrear.putExtra("NombreUsuario", nombre.toString());
+                            //btnCrear.putExtra("Administrador", true);
+                            //startActivity(btnCrear);
+                            //finish();
+                        }
+
+                    }
+                });
             }
 
             @Override
@@ -205,8 +224,6 @@ public class Buscar extends AppCompatActivity {
             //mensaje1.setText(Text);
             longitudActual=loc.getLongitude();
             latitudActual=loc.getLatitude();
-            latitudtexto.setText(String.valueOf(latitudActual));
-            longitudtexto.setText(String.valueOf(longitudActual));
             this.mainActivity.setLocation(loc);
         }
         @Override
