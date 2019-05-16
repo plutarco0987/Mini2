@@ -16,8 +16,8 @@
         <activity android:name=".FormCrear" />
         <activity android:name=".MainActivity" />
         <activity android:name=".ChatGrupal" />
-        <activity android:name=".PantallaInicio" />
-        <activity android:name=".Buscar">
+        <activity android:name=".Buscar" />
+        <activity android:name=".PantallaInicio">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
