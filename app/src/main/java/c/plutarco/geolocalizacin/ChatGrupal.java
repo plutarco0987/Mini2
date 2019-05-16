@@ -53,14 +53,16 @@ public class ChatGrupal extends AppCompatActivity  implements RoomListener {
      * EL channelID no lo deben cambiar esta ligado a mi cuenta y es unico, con el podemos munitorear el control de
      * mensajeria.
      */
-    private String channelID = "BvIqQwlC4R5UN4c9";
+    private String channelID = "o5jPqEXLi04iOkp7";
     /**
+     * private String channelID = "BvIqQwlC4R5UN4c9";
      * RoomName.- este valor debe ser dado por el usuario y almasenado en la base de datos, en el activiti anterior
      * debe seleccionar el grupo de chat al que desea ingresar. (Marco mucha atencion), este nombre esta
      * hardcodeado, se debe obtener de la base de datos cuando se cree okkey? para dejar en claro que habra muchos chats
      * por ahora que se creen.
+     * private String roomName = "observable-Chat_Privado";
      */
-    private String roomName = "observable-Chat_Privado";
+    private String roomName = "ComputoChat";
     private EditText editText;
     private Scaledrone scaledrone;
     private MessageAdapter messageAdapter;

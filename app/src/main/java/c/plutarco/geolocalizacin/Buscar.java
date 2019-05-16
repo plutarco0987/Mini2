@@ -17,10 +17,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import com.google.firebase.database.DatabaseError;
+
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ValueEventListener;
 
@@ -42,20 +46,25 @@ import java.util.Locale;
 public class Buscar extends AppCompatActivity {
 
     private List<DatosBD> lista= new ArrayList<DatosBD>();
+    private List<DatosBD> listaEnRango = new ArrayList<DatosBD>();
     ArrayAdapter<DatosBD> adapter;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     EditText nombre;
     ListView listadatos;
-    double latitud;
-    double longitud;
+    Button actualizar;
+    double latitudActual;
+    double longitudActual;
     TextView latitudtexto;
     TextView longitudtexto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscar);
+
+        actualizar = (Button) findViewById(R.id.btn_refrescar);
+
 
         nombre= findViewById(R.id.nombre);
         listadatos= findViewById(R.id.lista);
@@ -67,8 +76,14 @@ public class Buscar extends AppCompatActivity {
         } else {
             locationStart();
         }
+        actualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listadatos();
+            }
+        });
 
-        listadatos();
+
     }
 
     public void listadatos(){
@@ -76,11 +91,37 @@ public class Buscar extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 lista.clear();
+                listaEnRango.clear();
+
+                int iter=0;
                 for(DataSnapshot objSnapShot: dataSnapshot.getChildren()){
-                    DatosBD datos=objSnapShot.getValue(DatosBD.class);
+                    DatosBD datos = objSnapShot.getValue(DatosBD.class);
                     lista.add(datos);
 
-                    adapter= new ArrayAdapter<DatosBD>(Buscar.this,android.R.layout.simple_list_item_1,lista);
+                    Location locationA = new Location("punto A");
+
+                    locationA.setLatitude(datos.getLatitud());
+                    locationA.setLongitude(datos.getLongitud());
+
+                    Location locationB = new Location("punto B");
+
+                    locationB.setLatitude(latitudActual);
+                    locationB.setLongitude(longitudActual);
+
+                    float distance = locationA.distanceTo(locationB);
+                    iter++;
+                    Toast.makeText(getApplicationContext(), "Distancia: "+ distance +" Count: "+iter,Toast.LENGTH_SHORT).show();
+
+                    if(distance<100){
+                        System.out.println("Entró...............................");
+                        Toast.makeText(getApplicationContext(), "Entró: "+ distance +" Count: "+listaEnRango.size(),Toast.LENGTH_SHORT).show();
+                        listaEnRango.add(datos);
+                        nombre.setText("Hola: "+listaEnRango.size()+" / "+lista.size());
+                        Toast.makeText(getApplicationContext(), "Distancia: "+ distance +" Count: "+listaEnRango.size(),Toast.LENGTH_SHORT).show();
+                    }
+                    nombre.setText("Hola: "+listaEnRango.size()+" / "+lista.size());
+
+                    adapter= new ArrayAdapter<DatosBD>(Buscar.this,android.R.layout.simple_list_item_1,listaEnRango);
                     listadatos.setAdapter(adapter);
                 }
             }
@@ -142,6 +183,9 @@ public class Buscar extends AppCompatActivity {
             }
         }
     }
+
+
+
     public class Localizacion implements LocationListener {
         Buscar mainActivity;
         public Buscar getMainActivity() {
@@ -159,10 +203,10 @@ public class Buscar extends AppCompatActivity {
             String Text = "Mi ubicacion actual es: " + "\n Lat = "
                     + loc.getLatitude() + "\n Long = " + loc.getLongitude();
             //mensaje1.setText(Text);
-            longitud=loc.getLongitude();
-            latitud=loc.getLatitude();
-            latitudtexto.setText(String.valueOf(latitud));
-            longitudtexto.setText(String.valueOf(longitud));
+            longitudActual=loc.getLongitude();
+            latitudActual=loc.getLatitude();
+            latitudtexto.setText(String.valueOf(latitudActual));
+            longitudtexto.setText(String.valueOf(longitudActual));
             this.mainActivity.setLocation(loc);
         }
         @Override
@@ -190,6 +234,31 @@ public class Buscar extends AppCompatActivity {
             }
         }
     }
+
+    public void validarRango(List<DatosBD> listaDeCam){
+
+        for (int i =0; i < lista.size(); i ++){
+
+        }
+
+        /*
+        Location locationA = new Location("punto A");
+
+        locationA.setLatitude(latA);
+        locationA.setLongitude(lngA);
+
+        Location locationB = new Location("punto B");
+
+        locationB.setLatitude(latB);
+        locationB.setLongitude(lngB);
+
+        float distance = locationA.distanceTo(locationB);
+         */
+
+
+    }
+
+
 }
 
 
