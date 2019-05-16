@@ -38,5 +38,8 @@ public class DatosBD {
         return longitud;
     }
 
-
+    @Override
+    public String toString() {
+        return "Grupo: "+nombreG+"\n Distancia Limite:"+dist;
+    }
 }
