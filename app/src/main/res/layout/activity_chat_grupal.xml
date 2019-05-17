@@ -9,6 +9,13 @@
     android:focusableInTouchMode="true"
     tools:context=".ChatGrupal">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#030303"
+        />
+
     <ListView
         android:layout_width="match_parent"
         android:id="@+id/messages_view"
@@ -17,10 +24,10 @@
         android:layout_height="wrap_content"
         />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff"
         android:orientation="horizontal">
 
         <EditText

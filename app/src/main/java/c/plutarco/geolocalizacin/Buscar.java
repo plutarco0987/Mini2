@@ -66,7 +66,7 @@ public class Buscar extends AppCompatActivity {
         actualizar = (Button) findViewById(R.id.btn_refrescar);
 
 
-        nombre= findViewById(R.id.nombre);
+        nombre=(EditText) findViewById(R.id.nombreusuario);
         listadatos= findViewById(R.id.lista);
         numCapsulas=(TextView)findViewById(R.id.txt_capsulas);
 
@@ -127,20 +127,20 @@ public class Buscar extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         //Toast.makeText(getApplicationContext(),"Me diste click! Pos: "+view.toString(), Toast.LENGTH_SHORT).show();
-                        if(nombre.length()<0){
+                        if(nombre.getText().toString().length()<=0){
                             Toast.makeText(Buscar.this, "Debes incluir un nombre de usuario", Toast.LENGTH_SHORT).show();
                         }
                         else{
                             //List<DatosBD>
-                            Toast.makeText(Buscar.this, String.valueOf(view.), Toast.LENGTH_SHORT).show();
-                            //Intent btnCrear = new Intent(Buscar.this, ChatGrupal.class);
-                            //btnCrear.putExtra("NombreChat", grupo);
-                            //btnCrear.putExtra("NombreUsuario", nombre.toString());
-                            //btnCrear.putExtra("Administrador", true);
-                            //startActivity(btnCrear);
-                            //finish();
+                            DatosBD d=listaEnRango.get(position);
+                            //Toast.makeText(Buscar.this, , Toast.LENGTH_SHORT).show();
+                            Intent btnCrear = new Intent(Buscar.this, ChatGrupal.class);
+                            btnCrear.putExtra("NombreChat", d.nombreG);
+                            btnCrear.putExtra("NombreUsuario", nombre.getText().toString());
+                            btnCrear.putExtra("Administrador", false);
+                            startActivity(btnCrear);
+                            finish();
                         }
-
                     }
                 });
             }
@@ -189,13 +189,11 @@ public class Buscar extends AppCompatActivity {
         //Obtener la direccion de la calle a partir de la latitud y la longitud
         if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
             try {
-                Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-                List<Address> list = geocoder.getFromLocation(
+                Geocoder g = new Geocoder(this, Locale.getDefault());
+                List<Address> list = g.getFromLocation(
                         loc.getLatitude(), loc.getLongitude(), 1);
                 if (!list.isEmpty()) {
-                    Address DirCalle = list.get(0);
-                    //mensaje2.setText("Mi direccion es: \n"
-                     //       + DirCalle.getAddressLine(0));
+
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -219,8 +217,6 @@ public class Buscar extends AppCompatActivity {
             // debido a la deteccion de un cambio de ubicacion
             loc.getLatitude();
             loc.getLongitude();
-            String Text = "Mi ubicacion actual es: " + "\n Lat = "
-                    + loc.getLatitude() + "\n Long = " + loc.getLongitude();
             //mensaje1.setText(Text);
             longitudActual=loc.getLongitude();
             latitudActual=loc.getLatitude();
@@ -229,26 +225,16 @@ public class Buscar extends AppCompatActivity {
         @Override
         public void onProviderDisabled(String provider) {
             // Este metodo se ejecuta cuando el GPS es desactivado
-            //mensaje1.setText("GPS Desactivado");
+
         }
         @Override
         public void onProviderEnabled(String provider) {
             // Este metodo se ejecuta cuando el GPS es activado
-            //mensaje1.setText("GPS Activado");
+
         }
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras) {
-            switch (status) {
-                case LocationProvider.AVAILABLE:
-                    Log.d("debug", "LocationProvider.AVAILABLE");
-                    break;
-                case LocationProvider.OUT_OF_SERVICE:
-                    Log.d("debug", "LocationProvider.OUT_OF_SERVICE");
-                    break;
-                case LocationProvider.TEMPORARILY_UNAVAILABLE:
-                    Log.d("debug", "LocationProvider.TEMPORARILY_UNAVAILABLE");
-                    break;
-            }
+
         }
     }
 
@@ -277,5 +263,15 @@ public class Buscar extends AppCompatActivity {
 
 
 }
+
+
+
+
+
+
+
+
+
+
 
 

@@ -5,19 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PantallaInicio"
+    android:background="#27576B"
     android:layout_gravity="center"
     android:gravity="center"
     android:orientation="vertical">
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#BBB"
+        android:background="#032336"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
         android:text="@string/botoncliente"
         android:id="@+id/botonbuscargrupo"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="17dp"
+        android:layout_margin="10dp"
+        android:textColor="#BBB"
+        android:background="#032336"
         android:text="@string/botonservidor"
         android:id="@+id/botoncreargrupo"/>
 </LinearLayout>

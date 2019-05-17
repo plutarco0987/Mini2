@@ -5,6 +5,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -15,11 +16,14 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
 
 
 import com.fasterxml.jackson.core.JsonFactory;
@@ -53,16 +57,16 @@ public class ChatGrupal extends AppCompatActivity  implements RoomListener {
      * EL channelID no lo deben cambiar esta ligado a mi cuenta y es unico, con el podemos munitorear el control de
      * mensajeria.
      */
-    private String channelID = "o5jPqEXLi04iOkp7";
+    private String channelID = "BvIqQwlC4R5UN4c9";
     /**
-     * private String channelID = "BvIqQwlC4R5UN4c9";
+     *
      * RoomName.- este valor debe ser dado por el usuario y almasenado en la base de datos, en el activiti anterior
      * debe seleccionar el grupo de chat al que desea ingresar. (Marco mucha atencion), este nombre esta
      * hardcodeado, se debe obtener de la base de datos cuando se cree okkey? para dejar en claro que habra muchos chats
      * por ahora que se creen.
      * private String roomName = "observable-Chat_Privado";
      */
-    private String roomName = "ComputoChat";
+    private String roomName = "";
     private EditText editText;
     private Scaledrone scaledrone;
     private MessageAdapter messageAdapter;
@@ -85,7 +89,16 @@ public class ChatGrupal extends AppCompatActivity  implements RoomListener {
         Nombrechat=getIntent().getStringExtra("NombreChat");
         roomName="observable-"+Nombrechat;
 
+
         String NombreUsuario=getIntent().getStringExtra("NombreUsuario");
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setSubtitle(Nombrechat);
+        toolbar.setSubtitleTextColor(Color.WHITE);
+
+
+        Toast.makeText(this, NombreUsuario, Toast.LENGTH_SHORT).show();
         /**
          * Inicialización de datos
          */
@@ -105,7 +118,8 @@ public class ChatGrupal extends AppCompatActivity  implements RoomListener {
         scaledrone.connect(new Listener() {
             @Override
             public void onOpen() {
-                System.out.println("Scaledrone connection open");
+                System.out.println("Scaledrone esta en linea");
+                //suscripcions
                 scaledrone.subscribe(roomName, ChatGrupal.this);
             }
 
@@ -125,14 +139,8 @@ public class ChatGrupal extends AppCompatActivity  implements RoomListener {
                 System.err.println(reason);
             }
         });
-
-
     }
 
-    public ChatGrupal(String roomName, String nombrechat) {
-        this.roomName = roomName;
-        Nombrechat = nombrechat;
-    }
 
     public void ciclo() throws InterruptedException {
 
@@ -212,29 +220,16 @@ public class ChatGrupal extends AppCompatActivity  implements RoomListener {
         }
     }
 
-    /**
-     * Este es una clase provisional para los mensajes (aunque no la use)
-     * @return
-     */
-    private String getRandomName() {
-        String[] adjs = {"autumn", "hidden", "bitter", "misty", "silent", "empty", "dry", "dark", "summer", "icy", "delicate", "quiet", "white", "cool", "spring", "winter", "patient", "twilight", "dawn", "crimson", "wispy", "weathered", "blue", "billowing", "broken", "cold", "damp", "falling", "frosty", "green", "long", "late", "lingering", "bold", "little", "morning", "muddy", "old", "red", "rough", "still", "small", "sparkling", "throbbing", "shy", "wandering", "withered", "wild", "black", "young", "holy", "solitary", "fragrant", "aged", "snowy", "proud", "floral", "restless", "divine", "polished", "ancient", "purple", "lively", "nameless"};
-        String[] nouns = {"waterfall", "river", "breeze", "moon", "rain", "wind", "sea", "morning", "snow", "lake", "sunset", "pine", "shadow", "leaf", "dawn", "glitter", "forest", "hill", "cloud", "meadow", "sun", "glade", "bird", "brook", "butterfly", "bush", "dew", "dust", "field", "fire", "flower", "firefly", "feather", "grass", "haze", "mountain", "night", "pond", "darkness", "snowflake", "silence", "sound", "sky", "shape", "surf", "thunder", "violet", "water", "wildflower", "wave", "water", "resonance", "sun", "wood", "dream", "cherry", "tree", "fog", "frost", "voice", "paper", "frog", "smoke", "star"};
-        return (
-                adjs[(int) Math.floor(Math.random() * adjs.length)] +
-                        "_" +
-                        nouns[(int) Math.floor(Math.random() * nouns.length)]
-        );
-    }
 
     /**
      * Clase para los colores, esta debe usarse al momento que la persona elija su nombre (Marco mucho ojo)
      * @return
      */
     private String getRandomColor() {
-        Random r = new Random();
+        Random rondum = new Random();
         StringBuffer sb = new StringBuffer("#");
         while(sb.length() < 7){
-            sb.append(Integer.toHexString(r.nextInt()));
+            sb.append(Integer.toHexString(rondum.nextInt()));
         }
         return sb.toString().substring(0, 7);
     }
