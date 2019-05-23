@@ -88,23 +88,30 @@ public class FormCrear extends AppCompatActivity {
                Toast.makeText(getApplicationContext(), "Chat registrado", Toast.LENGTH_SHORT).show();
                */
 
+
                String grupo = nombreGrupo.getText().toString();
                String usuario = nombreUsuario.getText().toString();
 
-               String id = datosBD.push().getKey();
+               if(grupo.isEmpty() || usuario.isEmpty()){
+                   Toast.makeText(getApplicationContext(), "Por favor, llene los campos solicitados", Toast.LENGTH_SHORT).show();
+               }else{
 
-               DatosBD datos = new DatosBD(grupo, usuario, 50, latitud, longitud);
+                   String id = datosBD.push().getKey();
 
-               datosBD.child("Datos").child(grupo).setValue(datos);
+                   DatosBD datos = new DatosBD(grupo, usuario, 200, latitud, longitud);
 
-               //Toast.makeText(getApplicationContext(), "Chat registrado", Toast.LENGTH_SHORT).show();
+                   datosBD.child("Datos").child(grupo).setValue(datos);
 
-               Intent btnCrear = new Intent(FormCrear.this, ChatGrupal.class);
-               btnCrear.putExtra("NombreChat", grupo);
-               btnCrear.putExtra("NombreUsuario", usuario);
-               btnCrear.putExtra("Administrador", true);
-               startActivity(btnCrear);
-               finish();
+                   Toast.makeText(getApplicationContext(), "Capsula creada exitosamente!", Toast.LENGTH_SHORT).show();
+
+                   Intent btnCrear = new Intent(FormCrear.this, ChatGrupal.class);
+                   btnCrear.putExtra("NombreChat", grupo);
+                   btnCrear.putExtra("NombreUsuario", usuario);
+                   btnCrear.putExtra("Administrador", true);
+                   startActivity(btnCrear);
+                   finish();
+               }
+
            }
        });
     }

@@ -80,7 +80,7 @@ public class Buscar extends AppCompatActivity {
         actualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Me diste click ", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(),"Me diste click ", Toast.LENGTH_SHORT).show();
                 listadatos();
             }
         });
@@ -112,7 +112,7 @@ public class Buscar extends AppCompatActivity {
 
                     float distance = locationA.distanceTo(locationB);
                     iter++;
-                    Toast.makeText(getApplicationContext(), "Distancia: "+ distance +" Count: "+iter,Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getApplicationContext(), "Distancia: "+ distance +" Count: "+iter,Toast.LENGTH_SHORT).show();
 
                     if(distance<=100){
                         listaEnRango.add(datos);
@@ -128,7 +128,7 @@ public class Buscar extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         //Toast.makeText(getApplicationContext(),"Me diste click! Pos: "+view.toString(), Toast.LENGTH_SHORT).show();
                         if(nombre.getText().toString().length()<=0){
-                            Toast.makeText(Buscar.this, "Debes incluir un nombre de usuario", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Buscar.this, "Por favor, incluye un nombre de usuario", Toast.LENGTH_SHORT).show();
                         }
                         else{
                             //List<DatosBD>

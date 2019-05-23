@@ -9,16 +9,27 @@
     android:gravity="center"
     android:orientation="vertical">
 
+
+    <ImageView
+        android:layout_width="500dp"
+        android:layout_height="300dp"
+        android:src="@drawable/capsula" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="80dp" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#BBB"
-            android:textStyle="bold"
+            android:text="Nombre de la Capsula:"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
             android:textSize="20dp"
-            android:text="@string/nombregrupo"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et_nombreG"
@@ -29,13 +40,14 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#BBB"
-            android:textStyle="bold"
+            android:text="Nombre del Host:"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
             android:textSize="20dp"
-            android:text="@string/nombreusuario"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et_nombreU"
@@ -47,19 +59,20 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#BBB"
-            android:textStyle="bold"
+            android:text="Distancia:"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
             android:textSize="20dp"
-            android:text="@string/distancia"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et_dist"
             android:layout_width="69dp"
             android:layout_height="wrap_content"
-            android:hint="50"
+            android:hint="200"
             android:visibility="visible"
             tools:visibility="visible" />
     </LinearLayout>
@@ -69,10 +82,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:textColor="#BBB"
-        android:textSize="17dp"
-        android:textStyle="bold"
         android:background="#032336"
-        android:text="Crear Servidor" />
+        android:text="Crear Capsula"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="17dp"
+        android:textStyle="bold" />
 
 </LinearLayout>

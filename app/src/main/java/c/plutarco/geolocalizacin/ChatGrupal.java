@@ -146,7 +146,7 @@ public class ChatGrupal extends AppCompatActivity  implements RoomListener {
 
         for(int i=0;i<5;i++){
             Thread.sleep(5000);
-            Toast.makeText(this,"Entro", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"Entro", Toast.LENGTH_SHORT).show();
         }
     }
     /**
@@ -318,7 +318,7 @@ public class ChatGrupal extends AppCompatActivity  implements RoomListener {
                 datosBD.child("Datos").child(Nombrechat).child("latitud").setValue(latitud);
                 datosBD.child("Datos").child(Nombrechat).child("longitud").setValue(longitud);
 
-                Toast.makeText(chatGrupal, Text, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(chatGrupal, Text, Toast.LENGTH_SHORT).show();
             }
             this.chatGrupal.setLocation(loc);
         }

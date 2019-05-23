@@ -12,4 +12,11 @@
     <string name="nombreusuario">Nombre del usuario</string>
     <string name="input_placeholder">Write a message</string>
     <string name="distancia">Distancia</string>
+
+
+    <string-array name="Distancias">
+        <item>100 Mts</item>
+        <item>200 Mts</item>
+        <item>300 Mts</item>
+    </string-array>
 </resources>

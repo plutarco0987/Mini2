@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:textColor="#BBB"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
             android:text="Nombre de usuario"
             android:gravity="center" />
 
@@ -31,14 +31,15 @@
 
     </LinearLayout>
 
-    <Button android:id="@+id/btn_refrescar"
+    <Button
+        android:id="@+id/btn_refrescar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#BBB"
-        android:textSize="17dp"
-        android:textStyle="bold"
         android:background="#032336"
-        android:text="Actulizar Capsulas" />
+        android:text="Refrescar Capsulas"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="17dp"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/lista"
